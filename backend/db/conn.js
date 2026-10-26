@@ -1,0 +1,17 @@
+// Centraliza a conexão Sequelize com o banco MySQL local utilizado pela aplicação.
+const { Sequelize } = require('sequelize')
+const db = new Sequelize('a2', 'root', 'root', {
+    host: 'localhost',
+    dialect: 'mysql',
+    port: 3306
+})
+
+db.authenticate()
+    .then(() => {
+        console.log('Banco de dados Conectado!')
+    })
+    .catch((err) => {
+        console.error('Erro de conexão com banco de dados!', err)
+    })
+
+module.exports = db
